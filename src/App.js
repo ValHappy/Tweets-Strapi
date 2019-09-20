@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   const getTweets = () => {
-    fetch(server + '/tweets')
+    fetch(server + '/tweets?_sort=created_at:DESC')
       .then((response) => {
         return response.json();
       })
@@ -30,6 +30,7 @@ function App() {
     <div className="App">
 
       <SendTweet onSend={getTweets} />
+
       {tweets.map((item) => {
         return <Tweet key={item.id}
           text={item.text}
